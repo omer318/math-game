@@ -1,0 +1,7 @@
+<button *ngIf="numpadKeyValue.keyType === 'icon'" mat-stroked-button class="full-size number" [ngStyle]="{'color': numpadKeyValue.keyColor}">
+  <mat-icon class="icon-display" >{{numpadKeyValue.value}}</mat-icon> 
+</button>
+
+<button *ngIf="numpadKeyValue.keyType === 'number'" mat-stroked-button class="full-size number" color="primary">
+  {{ numpadKeyValue.value }}
+</button>
