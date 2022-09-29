@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,7 +15,14 @@ import { EquationComponent } from './components/game/equation/equation.component
 import { NumpadKeyComponent } from './components/game/numpad/numpad-key/numpad-key.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, NumpadComponent, GameComponent, EquationComponent, NumpadKeyComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    NumpadComponent,
+    GameComponent,
+    EquationComponent,
+    NumpadKeyComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,6 +31,7 @@ import { NumpadKeyComponent } from './components/game/numpad/numpad-key/numpad-k
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

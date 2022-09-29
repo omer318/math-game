@@ -1,0 +1,15 @@
+@use 'src/theme.scss' as theme;
+@use '@angular/material' as mat;
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: theme.$bg-color;
+    background: mat.get-color-from-palette(theme.$math-game-primary, 500);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.item { 
+    font-size: 10vmin;
+}
