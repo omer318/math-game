@@ -1,8 +1,5 @@
-import { Component, KeyValueDiffers, OnInit } from '@angular/core';
-import { NumpadKeyValue } from 'src/app/models/numpad-key-value';
-
-const CLEAR_ICON_VALUE = "cancel";
-const CHECK_ICON_VALUE = "check_circle"
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CHECK_ICON_VALUE, CLEAR_ICON_VALUE, NumpadKeyValue } from 'src/app/models/numpad-key-value';
 
 
 @Component({
@@ -13,6 +10,8 @@ const CHECK_ICON_VALUE = "check_circle"
 export class NumpadComponent implements OnInit {
   KEYS = [1, 2, 3, 4, 5, 6, 7, 8, 9, CLEAR_ICON_VALUE, 0, CHECK_ICON_VALUE];
   keysArray: NumpadKeyValue[] = [];
+
+  @Output() notifyChildEvent = new EventEmitter<NumpadKeyValue>();
 
   constructor() {}
   

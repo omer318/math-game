@@ -1,5 +1,4 @@
-import { BinaryOperator } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   ADD,
   DIV,
@@ -18,8 +17,8 @@ export class EquationComponent implements OnInit {
   firstElement!: number;
   secondElement!: number;
   operation!: Operator;
-  answer!: number;
-  expectedAnswer!: number;
+  @Input() answer = '';
+  @Output() expectedAnswer = new EventEmitter<string>;
 
   constructor() {}
 
@@ -60,6 +59,7 @@ export class EquationComponent implements OnInit {
         console.error('No operator');
         break;
     }
+    this.expectedAnswer.emit(this.operation.method(this.firstElement,this.secondElement));
   }
 
   ngOnInit(): void {

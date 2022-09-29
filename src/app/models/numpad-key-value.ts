@@ -11,3 +11,7 @@ export class NumpadKeyValue implements INumpadKeyValue {
 
   constructor() {}
 }
+
+
+export const CLEAR_ICON_VALUE = "backspace";
+export const CHECK_ICON_VALUE = "check_circle"
