@@ -18,6 +18,8 @@ export class EquationComponent implements OnInit {
   secondElement!: number;
   operation!: Operator;
   @Input() answer = '';
+  @Input() isBackgroundSpecial = '';
+
   @Output() expectedAnswer = new EventEmitter<string>;
 
   constructor() {}

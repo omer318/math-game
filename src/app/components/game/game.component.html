@@ -1,4 +1,12 @@
 <main>
-    <app-equation class="section" (expectedAnswer)="updateExpectedAnswer($event)" [answer]="answer"></app-equation>
-    <app-numpad class="section" (notifyChildEvent)="updateAnswer($event)"></app-numpad>
+  <app-equation
+    class="section"
+    (expectedAnswer)="updateExpectedAnswer($event)"
+    [answer]="answer"
+    [isBackgroundSpecial]="eqBgColor"
+  ></app-equation>
+  <app-numpad
+    class="section"
+    (notifyChildEvent)="updateAnswer($event)"
+  ></app-numpad>
 </main>

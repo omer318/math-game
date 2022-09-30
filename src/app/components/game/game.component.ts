@@ -13,6 +13,7 @@ import {
 export class GameComponent implements OnInit {
   answer = '';
   expectedAnswer = '';
+  eqBgColor = '';
   constructor() {}
 
   ngOnInit(): void {}
@@ -39,14 +40,38 @@ export class GameComponent implements OnInit {
   }
 
   submitAnswer() {
-    console.log(this.answer == this.expectedAnswer);
+    let isCorrect = this.answer == this.expectedAnswer;
+    this.flashColor(isCorrect ? 'green' : 'red');
   }
 
   clearAnswer() {
+    if (this.answer.length === 0){
+      this.flashColor("red");
+      return;
+    }
     this.answer = this.answer.slice(0, -1);
   }
 
   appendAnswer(value: string) {
-    this.answer += value;
+    if (this.answer.length < MAX_ANSWER_LENGTH) {
+      this.answer += value;
+      return;
+    }
+    this.flashColor('red', 2);
+  }
+
+  flashColor(color: string, times = 1) {
+    this.eqBgColor = color;
+    for (let i = 0; i < times; i++) {
+      sleep(500).then(() => {
+        this.eqBgColor = '';
+      });
+    }
   }
 }
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const MAX_ANSWER_LENGTH = 3;

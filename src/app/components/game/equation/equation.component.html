@@ -1,3 +1,11 @@
-<mat-card class="full-size container" >
-  <mat-card-title class="item">{{firstElement}} {{operation.name}} {{secondElement}} = {{answer}}</mat-card-title>
+<mat-card
+  class="full-size container"
+  [ngStyle]="
+    isBackgroundSpecial !== '' ? { background: isBackgroundSpecial } : null
+  "
+>
+  <mat-card-title class="item"
+    >{{ firstElement }} {{ operation.name }} {{ secondElement }} =
+    {{ answer }}</mat-card-title
+  >
 </mat-card>
