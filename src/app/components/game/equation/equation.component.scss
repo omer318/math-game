@@ -5,11 +5,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
     color: theme.$bg-color;
     background: mat.get-color-from-palette(theme.$math-game-primary, 500);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .item { 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     font-size: 10vmin;
 }

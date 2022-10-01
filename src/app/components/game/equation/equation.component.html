@@ -4,8 +4,9 @@
     isBackgroundSpecial !== '' ? { background: isBackgroundSpecial } : null
   "
 >
-  <mat-card-title class="item"
+  <div *ngIf="!showAnswer; else elseBlock;" class="full-size item"
     >{{ firstElement }} {{ operation.name }} {{ secondElement }} =
-    {{ answer }}</mat-card-title
+    {{ answer }}</div
   >
+  <ng-template #elseBlock><div class="full-size item">{{calculateAnswer()}}</div></ng-template>
 </mat-card>

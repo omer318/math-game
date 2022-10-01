@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   CHECK_ICON_VALUE,
   CLEAR_ICON_VALUE,
   NumpadKeyValue,
 } from 'src/app/models/numpad-key-value';
+import { EquationComponent } from './equation/equation.component';
 
 @Component({
   selector: 'app-game',
@@ -14,6 +15,12 @@ export class GameComponent implements OnInit {
   answer = '';
   expectedAnswer = '';
   eqBgColor = '';
+  correctAnswers = 0;
+  showAnswer =false;
+  totalQuestions = 0;
+
+  @ViewChild(EquationComponent) equationRef!: EquationComponent;
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -41,12 +48,25 @@ export class GameComponent implements OnInit {
 
   submitAnswer() {
     let isCorrect = this.answer == this.expectedAnswer;
-    this.flashColor(isCorrect ? 'green' : 'red');
+    this.showAnswer = true;
+    this.flashColor(isCorrect ? 'green' : 'red').then(() => {
+      this.updateScore(isCorrect);
+      this.answer = '';
+      this.showAnswer =false;
+      this.equationRef.generateEquation();
+    });
+  }
+
+  updateScore(isCorrect: boolean) {
+    if (isCorrect) {
+      this.correctAnswers++;
+    }
+    this.totalQuestions++;
   }
 
   clearAnswer() {
-    if (this.answer.length === 0){
-      this.flashColor("red");
+    if (this.answer.length === 0) {
+      this.flashColor('red');
       return;
     }
     this.answer = this.answer.slice(0, -1);
@@ -60,17 +80,18 @@ export class GameComponent implements OnInit {
     this.flashColor('red', 2);
   }
 
-  flashColor(color: string, times = 1) {
+  async flashColor(color: string, times = 1) {
+    console.time('flash')
     this.eqBgColor = color;
     for (let i = 0; i < times; i++) {
-      sleep(500).then(() => {
-        this.eqBgColor = '';
-      });
+      await sleep(1000);
+      this.eqBgColor = '';
     }
+    console.timeEnd('flash')
   }
 }
 
-function sleep(ms: number) {
+async function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 

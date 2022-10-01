@@ -19,6 +19,7 @@ export class EquationComponent implements OnInit {
   operation!: Operator;
   @Input() answer = '';
   @Input() isBackgroundSpecial = '';
+  @Input() showAnswer =false;
 
   @Output() expectedAnswer = new EventEmitter<string>;
 
@@ -61,7 +62,11 @@ export class EquationComponent implements OnInit {
         console.error('No operator');
         break;
     }
-    this.expectedAnswer.emit(this.operation.method(this.firstElement,this.secondElement));
+    this.expectedAnswer.emit(this.calculateAnswer());
+  }
+  
+  calculateAnswer(){
+    return this.operation.method(this.firstElement,this.secondElement)
   }
 
   ngOnInit(): void {
