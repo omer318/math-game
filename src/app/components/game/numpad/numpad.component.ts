@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CHECK_ICON_VALUE, CLEAR_ICON_VALUE, NumpadKeyValue } from 'src/app/models/numpad-key-value';
-
+import { CLEAR_ICON_VALUE, CHECK_ICON_VALUE, RED_COLOR, GREEN_COLOR } from 'src/app/consts/colors';
+import { NumpadKeyValue } from 'src/app/models/numpad-key-value';
 
 @Component({
   selector: 'app-numpad',
@@ -14,7 +14,7 @@ export class NumpadComponent implements OnInit {
   @Output() notifyChildEvent = new EventEmitter<NumpadKeyValue>();
 
   constructor() {}
-  
+
   ngOnInit(): void {
     this.keysArray = this.getKeys();
   }
@@ -23,12 +23,12 @@ export class NumpadComponent implements OnInit {
     return this.KEYS.map((value) => {
       let kv = new NumpadKeyValue();
       kv.value = value.toString();
-      kv.keyType = typeof value  === 'number' ? 'number' : 'icon';
+      kv.keyType = typeof value === 'number' ? 'number' : 'icon';
       if (value === CLEAR_ICON_VALUE) {
-        kv.keyColor = 'red';
+        kv.keyColor = RED_COLOR;
       }
       if (value === CHECK_ICON_VALUE) {
-        kv.keyColor = 'green';
+        kv.keyColor = GREEN_COLOR;
       }
       return kv;
     });

@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   CHECK_ICON_VALUE,
   CLEAR_ICON_VALUE,
-  NumpadKeyValue,
-} from 'src/app/models/numpad-key-value';
+  GREEN_COLOR,
+  RED_COLOR,
+} from 'src/app/consts/colors';
+import { NumpadKeyValue } from 'src/app/models/numpad-key-value';
 import { EquationComponent } from './equation/equation.component';
 
 @Component({
@@ -16,7 +18,7 @@ export class GameComponent implements OnInit {
   expectedAnswer = '';
   eqBgColor = '';
   correctAnswers = 0;
-  showAnswer =false;
+  showAnswer = false;
   totalQuestions = 0;
 
   @ViewChild(EquationComponent) equationRef!: EquationComponent;
@@ -49,10 +51,10 @@ export class GameComponent implements OnInit {
   submitAnswer() {
     let isCorrect = this.answer == this.expectedAnswer;
     this.showAnswer = true;
-    this.flashColor(isCorrect ? 'green' : 'red').then(() => {
+    this.flashColor(isCorrect ? GREEN_COLOR : RED_COLOR).then(() => {
       this.updateScore(isCorrect);
       this.answer = '';
-      this.showAnswer =false;
+      this.showAnswer = false;
       this.equationRef.generateEquation();
     });
   }
@@ -66,7 +68,7 @@ export class GameComponent implements OnInit {
 
   clearAnswer() {
     if (this.answer.length === 0) {
-      this.flashColor('red');
+      this.flashColor(RED_COLOR);
       return;
     }
     this.answer = this.answer.slice(0, -1);
@@ -77,17 +79,17 @@ export class GameComponent implements OnInit {
       this.answer += value;
       return;
     }
-    this.flashColor('red', 2);
+    this.flashColor(RED_COLOR, 2);
   }
 
   async flashColor(color: string, times = 1) {
-    console.time('flash')
-    this.eqBgColor = color;
+    console.time('flash');
     for (let i = 0; i < times; i++) {
+      this.eqBgColor = color;
       await sleep(1000);
       this.eqBgColor = '';
     }
-    console.timeEnd('flash')
+    console.timeEnd('flash');
   }
 }
 
