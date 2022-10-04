@@ -1,7 +1,3 @@
-@use '../theme.scss' as theme;
-@use '@angular/material' as mat;
-
-
 .main-container {
   display: grid;
   height: 100%;
@@ -23,11 +19,11 @@ app-header {
 }
 
 app-game {
-  background: theme.$bg-color;
+  background: var(--bg-color);
   grid-area: 2 / 1 / 3 / 2;
 }
 footer {
-  background: mat.get-color-from-palette(theme.$math-game-primary, 200);
+  background: var(--primary);
   grid-area: 3 / 1 / 4 / 2;
 } 
 

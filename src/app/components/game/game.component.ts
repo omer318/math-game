@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import {
   CHECK_ICON_VALUE,
   CLEAR_ICON_VALUE,
@@ -46,6 +46,26 @@ export class GameComponent implements OnInit {
           break;
       }
     }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    switch (event.key.toLowerCase()) {
+      case 'enter':
+        this.submitAnswer();
+        break;
+
+      case 'backspace':
+        this.clearAnswer();
+        break;
+
+      default:
+        if (!isNaN(Number(event.key))) {
+          this.appendAnswer(event.key);
+        }
+        break;
+    }
+    console.log({ event });
   }
 
   submitAnswer() {

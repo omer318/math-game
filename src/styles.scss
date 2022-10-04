@@ -1,4 +1,17 @@
+@import "@angular/material/theming";
+@import "./theme.scss";
+
 .full-size {
   height: 100%;
   width: 100%;
+}
+
+$primary: mat-color($math-game-primary);
+$accent: mat-color($math-game-accent);
+$bg-color: rgb(40, 52, 61);
+
+:root {
+  --primary: #{$primary};
+  --accent: #{$accent};
+  --bg-color: #{$bg-color};
 }

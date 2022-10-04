@@ -13,6 +13,8 @@ import { NumpadComponent } from './components/game/numpad/numpad.component';
 import { GameComponent } from './components/game/game.component';
 import { EquationComponent } from './components/game/equation/equation.component';
 import { NumpadKeyComponent } from './components/game/numpad/numpad-key/numpad-key.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,12 @@ import { NumpadKeyComponent } from './components/game/numpad/numpad-key/numpad-k
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
