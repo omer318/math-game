@@ -1,4 +1,11 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  OnInit,
+  ViewChild,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import {
   CHECK_ICON_VALUE,
   CLEAR_ICON_VALUE,
@@ -21,6 +28,8 @@ export class GameComponent implements OnInit {
   showAnswer = false;
   totalQuestions = 0;
 
+  @Output() scoreChange = new EventEmitter<[number, number]>();
+
   @ViewChild(EquationComponent) equationRef!: EquationComponent;
 
   constructor() {}
@@ -29,6 +38,13 @@ export class GameComponent implements OnInit {
 
   updateExpectedAnswer(value: string) {
     this.expectedAnswer = value;
+  }
+
+  restartGame() {
+    this.correctAnswers = 0;
+    this.totalQuestions = 0;
+    this.emitScoreChange();
+    this.getNewEquation();
   }
 
   updateAnswer(key: NumpadKeyValue) {
@@ -73,10 +89,14 @@ export class GameComponent implements OnInit {
     this.showAnswer = true;
     this.flashColor(isCorrect ? GREEN_COLOR : RED_COLOR).then(() => {
       this.updateScore(isCorrect);
-      this.answer = '';
-      this.showAnswer = false;
-      this.equationRef.generateEquation();
+      this.getNewEquation();
     });
+  }
+
+  getNewEquation() {
+    this.answer = '';
+    this.showAnswer = false;
+    this.equationRef.generateEquation();
   }
 
   updateScore(isCorrect: boolean) {
@@ -84,6 +104,7 @@ export class GameComponent implements OnInit {
       this.correctAnswers++;
     }
     this.totalQuestions++;
+    this.emitScoreChange();
   }
 
   clearAnswer() {
@@ -103,13 +124,15 @@ export class GameComponent implements OnInit {
   }
 
   async flashColor(color: string, times = 1) {
-    console.time('flash');
     for (let i = 0; i < times; i++) {
       this.eqBgColor = color;
       await sleep(1000);
       this.eqBgColor = '';
     }
-    console.timeEnd('flash');
+  }
+
+  emitScoreChange() {
+    this.scoreChange.emit([this.correctAnswers, this.totalQuestions]);
   }
 }
 

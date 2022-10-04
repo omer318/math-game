@@ -1,6 +1,5 @@
 <router-outlet></router-outlet>
 <div class="main-container" role="main">
-  <app-header class="grid-section"></app-header>
-  <app-game class="grid-section"></app-game>
-  <footer class="grid-section"></footer>
+  <app-header class="grid-section" [score]="score" (emitRestartSignal)="restartGame()"></app-header>
+  <app-game class="grid-section" (scoreChange)="updateScore($event)"></app-game>
 </div>

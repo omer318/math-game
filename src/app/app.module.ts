@@ -15,6 +15,7 @@ import { EquationComponent } from './components/game/equation/equation.component
 import { NumpadKeyComponent } from './components/game/numpad/numpad-key/numpad-key.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ScoreComponent } from './components/header/score/score.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { environment } from '../environments/environment';
     GameComponent,
     EquationComponent,
     NumpadKeyComponent,
+    ScoreComponent,
   ],
   imports: [
     BrowserModule,
