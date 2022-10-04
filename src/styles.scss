@@ -7,11 +7,19 @@
 }
 
 $primary: mat-color($math-game-primary);
+$primary-darker: mat-color($math-game-primary, darker);
 $accent: mat-color($math-game-accent);
+$accent-darker: mat-color($math-game-accent, darker);
 $bg-color: rgb(40, 52, 61);
 
 :root {
   --primary: #{$primary};
+  --primary-darker: #{$primary-darker};
   --accent: #{$accent};
+  --accent-darker: #{$accent-darker};
   --bg-color: #{$bg-color};
+}
+
+.default-bg {
+  background: var(--accent-darker);
 }
