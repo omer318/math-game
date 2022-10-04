@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "math-game:build:production",
+            "firebaseProject": "my-math-game-d527f",
+            "firebaseHostingSite": "my-math-game-d527f"
+          }
         }
       }
     }

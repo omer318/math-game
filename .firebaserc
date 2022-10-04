@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "my-math-game-d527f": {
+      "hosting": {
+        "math-game": [
+          "my-math-game-d527f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "my-math-game-d527f"
+  }
+}
