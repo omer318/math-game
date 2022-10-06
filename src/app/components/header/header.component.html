@@ -1,5 +1,5 @@
 <mat-toolbar class="toolbar">
-  <button mat-raised-button color="primary" (click)="doRestart()">Restart Game</button>
+  <button mat-raised-button color="primary" class="rainbow-hover" (click)="doRestart()">Restart Game</button>
   <span class="example-spacer"></span>
   <app-score [correctAnswers]="score[0]" [totalQuestions]="score[1]"></app-score>
 </mat-toolbar>

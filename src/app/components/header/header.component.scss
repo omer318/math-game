@@ -7,3 +7,16 @@
   color: whitesmoke;
   background: var(--accent-darker);
 }
+
+.rainbow-hover:hover {
+  animation: rainbow 5s infinite ;
+}
+
+@keyframes rainbow {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}

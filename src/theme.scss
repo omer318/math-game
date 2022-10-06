@@ -2,7 +2,7 @@
 @use '@angular/material' as mat;
 @include mat.core();
 
-$math-game-primary: mat.define-palette(mat.$pink-palette);
+$math-game-primary: mat.define-palette(mat.$cyan-palette);
 $math-game-accent: mat.define-palette(mat.$blue-gray-palette);
 $math-game-warn: mat.define-palette(mat.$red-palette);
 $math-game-theme: mat.define-light-theme((
