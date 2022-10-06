@@ -1,1 +1,3 @@
-<div>{{correctAnswers}} / {{totalQuestions}}</div>
+<div *ngIf="mobile; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock><div>Answered {{getCorrectPercentage()}}% correctly out of {{totalQuestions}}</div></ng-template>
+<ng-template #elseBlock><div>{{getCorrectPercentage()}}% out of {{totalQuestions}}</div></ng-template>

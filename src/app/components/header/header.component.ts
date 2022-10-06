@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
 
   doRestart() { 
     this.emitRestartSignal.emit(null);
-    debugger;
   }
 
 }

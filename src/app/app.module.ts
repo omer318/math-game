@@ -16,6 +16,7 @@ import { NumpadKeyComponent } from './components/game/numpad/numpad-key/numpad-k
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ScoreComponent } from './components/header/score/score.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ScoreComponent } from './components/header/score/score.component';
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
+    LayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
